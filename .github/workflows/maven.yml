@@ -14,5 +14,5 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: cd TruckMonitor/backend/backend
-      run: mvn -B package --file pom.xml
+    - run: cd TruckMonitor/backend/backend
+    - run: mvn -B package --file pom.xml
