@@ -4,7 +4,7 @@
 
 # Introduction
 MAN Truck Monitor is an application to help trucks manager find points of interests nearby, it is built with Spring-boot and React.
-
+![Image](https://github.com/MustafaKhalil-IST/MANTruckMonitor/blob/master/snip.PNG)
 # Requirements
   - Java 1.8*
   - Node.js
