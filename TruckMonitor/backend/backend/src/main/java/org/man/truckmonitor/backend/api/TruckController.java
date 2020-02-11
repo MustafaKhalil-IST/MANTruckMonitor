@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @Api(description = "Set of endpoints for Trucks and Points of interests")
 public class TruckController {
+    private static Logger logger = LoggerFactory.getLogger(TruckController.class);
+
     @Autowired
     private TruckService truckService;
 
@@ -27,6 +30,7 @@ public class TruckController {
     @GetMapping("/api/trucks/{plate}")
     @ApiOperation("get truck by plate license")
     public TruckDTO getTruckByPlate(@PathVariable String plate) throws TruckException {
+        logger.info("getTruckByPlate: plate={}", plate);
         return truckService.getTruckByPlate(plate);
     }
 
@@ -34,6 +38,7 @@ public class TruckController {
     @PostMapping("/api/trucks")
     @ApiOperation("create truck")
     public TruckDTO createTruck(@RequestBody TruckDTO truckDTO) throws TruckException {
+        logger.info("createTruck: plate={}", truckDTO.getLicensePlate());
         return truckService.createTruck(truckDTO);
     }
 
@@ -41,6 +46,8 @@ public class TruckController {
     @PostMapping("/api/pois")
     @ApiOperation("search points of interests")
     public JsonNode searchPOIs(@RequestBody POISearchDTO poiSearchDTO) {
+        logger.info("searchPOIs: distance={}, type={}, lat={}, lng={}", poiSearchDTO.getDistance(),
+                poiSearchDTO.getType(), poiSearchDTO.getLat(), poiSearchDTO.getLng());
         return poIService.getPOIs(poiSearchDTO);
     }
 
@@ -48,7 +55,9 @@ public class TruckController {
     @CrossOrigin
     @PostMapping("/api/trucks/{plate}")
     @ApiOperation("update truck location")
-    public TruckLocationDTO updateTruckLocation(@PathVariable String plate, @Valid @RequestBody TruckLocationDTO truckLocationDTO) throws TruckException {
+    public TruckLocationDTO updateTruckLocation(@PathVariable String plate, @Valid @RequestBody TruckLocationDTO truckLocationDTO)
+            throws TruckException {
+        logger.info("updateTruckLocation: plate={}, lat={}, lng={}", plate, truckLocationDTO.getLat(), truckLocationDTO.getLng());
         return truckService.updateTruckLocation(truckLocationDTO, plate);
     }
 

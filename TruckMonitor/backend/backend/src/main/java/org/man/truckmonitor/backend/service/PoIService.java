@@ -23,7 +23,6 @@ public class PoIService {
         url += "&radius=" + ((poiSearchDTO.getDistance() == null) ? "1000": poiSearchDTO.getDistance());
         url += "&location=" + poiSearchDTO.getLat() + "," + poiSearchDTO.getLng();
         url += "&key=" + this.APIKey;
-        System.out.println(url);
         return url;
     }
 
