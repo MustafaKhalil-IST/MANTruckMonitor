@@ -35,3 +35,7 @@ $ mvn clean test
 
 # API Documentation
 Using Swagger: http://localhost:8080/swagger-ui.html
+
+# How does it work?
+You can search for a Truck by writing its plate license then clicking `#apply`, you can also search for restaurants, gas stations, hotels or all of it, by selecting from the dropdown meny `Looking for`, you can specify the search diameter in meters by writing in the `distance` input box, the button `add car` is to create a truck, you will have to enter its plate license to an alert box, then you can update its locations manually by putting the license plate in the plate input box and just clicking on the map.
+Icons are for the searched points of interest, by clicking on it, a green line will be drawn from the current location of the truck to it, and by clicking on the line you will get the distance.
